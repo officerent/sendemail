@@ -1,0 +1,48 @@
+alias_database = hash:/etc/aliases
+alias_maps = hash:/etc/aliases
+broken_sasl_auth_clients = yes
+command_directory = /usr/sbin
+config_directory = /etc/postfix
+daemon_directory = /usr/libexec/postfix
+data_directory = /var/lib/postfix
+debug_peer_level = 2
+html_directory = no
+
+ 
+
+# 设置 Postfix 服务监听的网络接口
+
+inet_interfaces = localhost
+inet_protocols = all
+mail_owner = postfix
+mailq_path = /usr/bin/mailq.postfix
+manpage_directory = /usr/share/man
+ 
+# 设置可接收邮件的主机名称或域名
+mydestination = $myhostname, localhost.$mydomain, localhost
+
+# 设置运行 Postfix 服务的邮件主机的主机名、域名，如下所示：
+mydomain = 92yangmao.com
+myhostname = mail.92yangmao.com
+
+# 设置可转发哪些网络的邮件
+mynetworks = 127.0.0.0/8
+# 设置由本机寄出的邮件所使用的域名或主机名称
+myorigin = $mydomain
+newaliases_path = /usr/bin/newaliases.postfix
+queue_directory = /var/spool/postfix
+readme_directory = /usr/share/doc/postfix-2.6.6/README_FILES
+ 
+# 设置可转发哪些网域
+relay_domains = $mydestination
+sample_directory = /usr/share/doc/postfix-2.6.6/samples
+sendmail_path = /usr/sbin/sendmail.postfix
+setgid_group = postdrop
+
+# 配置SMTP信息
+smtpd_client_restrictions = permit_sasl_authenticated
+smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_local_domain = ''
+smtpd_sasl_security_options = noanonymous
+unknown_local_recipient_reject_code = 550
