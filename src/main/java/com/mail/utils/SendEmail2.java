@@ -67,7 +67,7 @@ public class SendEmail2{
 			if(getEmailsResult!=null){					
 				for(String receiver:receivers){
 					try{
-						sendEmail("root@92yangmao.com","羊毛情报站","!!!yangmao2@@@",
+						sendEmail("yangmao2@92yangmao.com","羊毛情报站","yangmao-2",
 								"localhost",getEmailsResult.getEmailTitle(),getEmailsResult.getEmailContent(),receiver);
 					}catch(Exception e){
 						log.error("bad email get result",e);
